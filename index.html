@@ -4,46 +4,232 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Siamese Armory MoP</title>
-<link rel="stylesheet" href="style.css">
+<title>Siamese Armory — MoP Classic</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --gold:#d2b477;
+  --gold2:#947448;
+  --bg:#090f16;
+  --panel:#111d29;
+  --line:#2b3d4b;
+  --text:#e8e4da;
+  --muted:#8799a7;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:radial-gradient(ellipse at top,#1b3040,#090f16 65%);
+  color:var(--text);font-family:Inter,Arial,sans-serif;min-height:100vh
+}
+header{
+  height:82px;padding:0 6%;display:flex;align-items:center;
+  justify-content:space-between;background:#080e15eF;
+  border-bottom:1px solid #594a32
+}
+.logo{font:700 22px Cinzel;color:var(--gold);letter-spacing:3px}
+.logo small{display:block;font:9px Inter;letter-spacing:4px;color:#91a0aa;margin-top:5px}
+nav{display:flex;gap:25px}
+nav a{color:#a9b5bd;text-decoration:none;font-size:11px;text-transform:uppercase;letter-spacing:1px}
+nav a:hover{color:var(--gold)}
+.version{font-size:10px;color:var(--gold);border:1px solid var(--gold2);padding:9px 13px}
+.hero{
+  min-height:290px;padding:65px 8% 45px;text-align:center;
+  border-bottom:1px solid var(--line);
+  background:linear-gradient(90deg,#0b141dcc,#14273799,#0b141dcc)
+}
+.eyebrow{font-size:10px;letter-spacing:4px;color:var(--gold)}
+h1{font:600 clamp(35px,5vw,55px) Cinzel;margin:15px 0;color:#f0e5ce}
+.hero p{color:var(--muted);font-size:13px}
+.search{
+  display:flex;max-width:750px;margin:30px auto 0;
+  background:#0b141d;border:1px solid #596a75;min-height:55px
+}
+.search input,.search select{
+  background:transparent;color:white;border:0;outline:0;padding:0 15px;
+  min-width:0
+}
+.search input{flex:1}
+.search select{border-left:1px solid var(--line);width:180px}
+.search select option{background:#111d29}
+.search button{
+  background:linear-gradient(#e1c88f,#aa8852);border:0;padding:0 25px;
+  color:#17130c;font-weight:700;cursor:pointer
+}
+.search button:hover{filter:brightness(1.15)}
+main{max-width:1150px;margin:35px auto;padding:0 22px}
+.status{
+  border:1px solid #594a32;background:#2b2419;color:#cbb78c;
+  padding:13px 16px;font-size:11px;margin-bottom:20px
+}
+.profile-head{
+  display:flex;justify-content:space-between;align-items:center;
+  border-bottom:1px solid var(--line);padding:10px 0 20px
+}
+.profile-head h2{font:600 29px Cinzel;margin:0;color:#e8d5ad}
+.profile-head span{font-size:10px;color:var(--muted)}
+.layout{display:grid;grid-template-columns:260px 1fr;gap:18px;margin-top:18px}
+.card{
+  background:linear-gradient(145deg,#172735,#101923);
+  border:1px solid var(--line);padding:20px
+}
+.character{text-align:center;min-height:250px}
+.portrait{
+  width:95px;height:95px;margin:12px auto 20px;border-radius:50%;
+  border:1px solid var(--gold);display:grid;place-items:center;
+  color:var(--gold);font:40px Cinzel;background:#1b3040
+}
+.character h3{font:20px Cinzel;color:#e6d4ad}
+.character p{font-size:11px;color:var(--muted)}
+.empty-state{
+  text-align:center;padding:55px 15px;color:var(--muted)
+}
+.empty-state .symbol{font:60px Cinzel;color:#8b754e}
+.empty-state h2{font:22px Cinzel;color:#d7c29a}
+.tabs{display:flex;gap:0;border-bottom:1px solid var(--line);margin-top:18px}
+.tabs button{
+  background:transparent;border:0;border-bottom:2px solid transparent;
+  color:#94a4af;padding:17px 20px;cursor:pointer;font-size:10px;
+  letter-spacing:1px;text-transform:uppercase
+}
+.tabs button.active{color:var(--gold);border-bottom-color:var(--gold)}
+.content{min-height:220px}
+.content h3{font:17px Cinzel;color:var(--gold)}
+.placeholder{
+  border:1px dashed #405462;padding:25px;color:#8799a7;
+  font-size:12px;text-align:center;line-height:1.8
+}
+footer{
+  margin-top:65px;padding:25px 6%;border-top:1px solid var(--line);
+  display:flex;justify-content:space-between;color:#657783;font-size:9px;
+  letter-spacing:1px
+}
+@media(max-width:700px){
+  header{padding:0 15px}.version,nav{display:none}
+  .hero{padding:45px 15px}
+  .search{flex-wrap:wrap}
+  .search input{min-height:50px;width:100%;flex:auto}
+  .search select{height:45px;flex:1}
+  .search button{height:45px}
+  .layout{grid-template-columns:1fr}
+  .profile-head{align-items:flex-start;gap:10px;flex-direction:column}
+  .tabs{overflow-x:auto}
+  .tabs button{padding:14px 11px;white-space:nowrap;font-size:9px}
+  footer{flex-direction:column;gap:10px}
+}
+</style>
 </head>
 <body>
+
 <header>
-  <h1>SIAMESE ARMORY</h1>
-  <p>MISTS OF PANDARIA CLASSIC</p>
+  <div class="logo">SIAMESE
+    <small>ARMORY · MISTS OF PANDARIA</small>
+  </div>
+  <nav>
+    <a href="#">Accueil</a>
+    <a href="#character">Personnages</a>
+    <a href="#pvp">JcJ</a>
+  </nav>
+  <div class="version">MOP CLASSIC</div>
 </header>
 
-<main>
-  <section class="search">
-    <h2>Armurerie des héros</h2>
-    <input id="character" placeholder="Nom du personnage">
-    <button onclick="searchCharacter()">Rechercher</button>
-  </section>
+<section class="hero">
+  <div class="eyebrow">THE PANDARIAN ARMORY</div>
+  <h1>Discover your legend</h1>
+  <p>Recherchez un personnage et consultez son parcours en Pandarie.</p>
 
-  <section id="profile" class="panel">
-    <h2 id="name">Saralyssa</h2>
-    <p id="description">Mage mort-vivant · Niveau 90 · Horde</p>
+  <form class="search" id="searchForm">
+    <input id="characterName" placeholder="Nom du personnage..." required>
+    <select id="realm">
+      <option value="auberdine">Auberdine</option>
+      <option value="sulfuron">Sulfuron</option>
+      <option value="everlook">Everlook</option>
+    </select>
+    <button type="submit">RECHERCHER</button>
+  </form>
+</section>
 
-    <div class="columns">
-      <div>
-        <h3>Équipement</h3>
-        <ul id="equipment"></ul>
+<main id="character">
+  <div class="status" id="status">
+    ARMURERIE EN ATTENTE — Saisissez un nom et choisissez un royaume.
+    La connexion à l'API Blizzard n'est pas encore configurée.
+  </div>
+
+  <div class="profile-head">
+    <h2 id="profileName">Aucun personnage sélectionné</h2>
+    <span id="profileInfo">En attente d'une recherche</span>
+  </div>
+
+  <div class="layout">
+    <aside class="card character">
+      <div class="portrait">?</div>
+      <h3 id="sideName">Personnage inconnu</h3>
+      <p id="sideInfo">Les informations apparaîtront ici.</p>
+    </aside>
+
+    <section class="card">
+      <div class="tabs">
+        <button class="active" data-tab="equipment">Équipement</button>
+        <button data-tab="stats">Statistiques</button>
+        <button data-tab="talents">Talents</button>
+        <button data-tab="pvp">JcJ</button>
       </div>
-      <div>
-        <h3>Statistiques</h3>
-        <ul id="stats"></ul>
+      <div class="content" id="tabContent">
+        <div class="empty-state">
+          <div class="symbol">✦</div>
+          <h2>Bienvenue dans Siamese Armory</h2>
+          <p>Aucun personnage n'est affiché par défaut.<br>
+          Effectuez une recherche pour commencer.</p>
+        </div>
       </div>
-    </div>
-
-    <h3>Talents et glyphes</h3>
-    <div id="talents"></div>
-
-    <h3>Cotes JcJ</h3>
-    <div id="pvp"></div>
-  </section>
+    </section>
+  </div>
 </main>
 
-<footer>Siamese Armory · Projet communautaire indépendant</footer>
-<script src="script.js"></script>
+<footer>
+  <span>SIAMESE ARMORY</span>
+  <span>COMMUNITY PROJECT · NOT AFFILIATED WITH BLIZZARD</span>
+  <span>2026</span>
+</footer>
+
+<script>
+const tabs = {
+  equipment: "Les données d'équipement seront affichées ici lorsque l'API sera connectée.",
+  stats: "Les caractéristiques du personnage seront affichées ici.",
+  talents: "Les spécialisations, talents et glyphes seront affichés ici.",
+  pvp: "Les informations JcJ et les cotes disponibles seront affichées ici."
+};
+
+document.querySelectorAll(".tabs button").forEach(button => {
+  button.addEventListener("click", () => {
+    document.querySelectorAll(".tabs button").forEach(b => b.classList.remove("active"));
+    button.classList.add("active");
+    const tab = button.dataset.tab;
+    document.getElementById("tabContent").innerHTML =
+      '<div class="placeholder">' + tabs[tab] + '</div>';
+  });
+});
+
+document.getElementById("searchForm").addEventListener("submit", event => {
+  event.preventDefault();
+
+  const name = document.getElementById("characterName").value.trim();
+  const realm = document.getElementById("realm").value;
+
+  if (!name) return;
+
+  document.getElementById("profileName").textContent = name;
+  document.getElementById("sideName").textContent = name;
+  document.getElementById("profileInfo").textContent = realm + " · Recherche demandée";
+  document.getElementById("sideInfo").textContent = "Royaume : " + realm;
+
+  document.getElementById("status").textContent =
+    "Recherche préparée pour " + name + " sur " + realm +
+    ". L'API n'est pas encore branchée : aucune donnée n'a été inventée.";
+
+  document.getElementById("tabContent").innerHTML =
+    '<div class="placeholder">La connexion au service de données est nécessaire pour afficher ce personnage.</div>';
+});
+</script>
 </body>
 </html>
