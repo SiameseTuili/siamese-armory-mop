@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Siamese Armory MoP</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>SIAMESE ARMORY</h1>
+  <p>MISTS OF PANDARIA CLASSIC</p>
+</header>
+
+<main>
+  <section class="search">
+    <h2>Armurerie des héros</h2>
+    <input id="character" placeholder="Nom du personnage">
+    <button onclick="searchCharacter()">Rechercher</button>
+  </section>
+
+  <section id="profile" class="panel">
+    <h2 id="name">Saralyssa</h2>
+    <p id="description">Mage mort-vivant · Niveau 90 · Horde</p>
+
+    <div class="columns">
+      <div>
+        <h3>Équipement</h3>
+        <ul id="equipment"></ul>
+      </div>
+      <div>
+        <h3>Statistiques</h3>
+        <ul id="stats"></ul>
+      </div>
+    </div>
+
+    <h3>Talents et glyphes</h3>
+    <div id="talents"></div>
+
+    <h3>Cotes JcJ</h3>
+    <div id="pvp"></div>
+  </section>
+</main>
+
+<footer>Siamese Armory · Projet communautaire indépendant</footer>
+<script src="script.js"></script>
+</body>
+</html>
